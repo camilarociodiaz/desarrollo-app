@@ -1,5 +1,4 @@
-import { FlatList, TouchableOpacity, StyleSheet, Text } from 'react-native'
-
+import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native'
 
 export default function List(props) {
 
@@ -10,7 +9,7 @@ export default function List(props) {
             data={itemList}
             renderItem={data => (
                 <TouchableOpacity onPress={() => onHandlerModal(data.item.id)} style={styles.item}>
-                    <Text style={{textDecorationLine: data.item.completed ? 'line-through' : null}}>{data.item.value}</Text>
+                    <Text style={{textDecorationLine: data.item.completed ? 'line-through' : null}}> ✏️   {data.item.value}</Text>
                 </TouchableOpacity>
             )}
             showsVerticalScrollIndicator={false}
@@ -21,13 +20,15 @@ export default function List(props) {
 
 const styles = StyleSheet.create({
     item: {
+    
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderWidth: 1,
-        borderColor: 'black',
+        backgroundColor: '#edebeb', 
         borderRadius: 10,
-        marginTop: '10%',
-        height: 50,
+        marginTop: '7%',
+        height: 40,
+        padding: 5,
+    
     }
 })

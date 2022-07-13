@@ -1,5 +1,4 @@
-import { Modal, View, Text, StyleSheet, Button } from 'react-native'
-
+import { Button, Modal, StyleSheet, Text, View } from 'react-native'
 
 export default function CustomModal(props) {
 
@@ -15,18 +14,19 @@ export default function CustomModal(props) {
                 <View style={styles.modalView}>
                     <View style={styles.modalTitle}>
                         <Text>
-                            Mi modal
+                            To do list 
                         </Text>
                     </View>
                     <View style={styles.modalMessage}>
-                        <Text>Estas seguro que desea borrar ?</Text>
+                        <Text style={{fontSize: 20, textAlign: 'center'} }> Que desea hacer con esta actividad?</Text>
                     </View>
                     <View style={styles.modalMessage}>
                         <Text style={styles.modalItem}>{itemSelected.value}</Text>
                     </View>
                     <View style={styles.modalButton}>
-                        <Button onPress={() => onHandlerDeleteItem(itemSelected.id)} title='Confirmar' />
-                        <Button onPress={() => onHandlerCompleteItem(itemSelected.id)} title='Completar' />
+                        
+                        <Button color="#ff5c5c" onPress={() => onHandlerCompleteItem(itemSelected.id)} title='Completar' />
+                        <Button color="#ff5c5c" onPress={() => onHandlerDeleteItem(itemSelected.id)} title='Borrar' />
                     </View>
                 </View>
             </View>
@@ -41,33 +41,44 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: 'rgba(0,0,0,0.5)'
         },  
-        modalView: {
+    
+  modalView: {
         backgroundColor: 'white',
         width: '80%',
-        height: '50%',
+        height: '40%',
         borderRadius: 10,
         padding: '10%',
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'column',
         },
-        modalTitle: {
-        backgroundColor: '#ccc',
-        color: 'white',
-        fontSize: 18,
+   modalTitle: {
+        
+       
         },
         modalMessage: {
-        marginBottom: 10,
-        justifyContent: 'center',
-        alignItems: 'center'
-        },
-        modalButton: {
-        marginTop: 15,
+            marginBottom: 10,
+            justifyContent: 'center',
+            alignItems: 'center',
+            paddingTop: 10,
+            
+            },
+    modalButton: {
+    flex: 1,
+    width: '90%',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'space-between',
+        
+        
         },
-        modalItem: {
-        fontSize: 30
+    modalItem: {
+        fontSize: 30,
+        backgroundColor: "#edebeb",
+        padding: 5,
+        paddingRight: 30,
+        paddingLeft:30,
+        borderRadius: 10,
+        color: '#ff5c5c',
         }
 })

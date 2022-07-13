@@ -1,8 +1,9 @@
-import { StyleSheet, View, TextInput, Text, Button, FlatList, TouchableOpacity } from 'react-native';
-import { useState, useEffect } from 'react'
-import CustomModal from './components/Modal'
+import { StyleSheet, Text, View } from 'react-native';
+
 import AddItem from './components/AddItem'
+import CustomModal from './components/Modal'
 import List from './components/List'
+import { useState } from 'react'
 
 export default function App( ) {
     
@@ -15,7 +16,6 @@ export default function App( ) {
   const onHandlerAddItem = () => {
     console.log('se agrego el item', textItem)
     setItemList(currentItems => [...currentItems, { id: Date.now(), value: textItem, completed: false}])
-    // setItemList({...itemList, id: Math.random()*10, value: textItem }) => hace lo mismo que la de arriba
     setTextItem('')
   }
 
@@ -36,21 +36,14 @@ export default function App( ) {
     setModalVisible(!modalVisible)
   }
   
-  // useEffect(() => {
-  //   // se ejectua todo el tiempo, NO SE USA ASI
-  // })
-    
-  // useEffect(() => {
-  //   // se ejecuta cuando se carga el componente
-  // }, [])
-  
-  // useEffect(() => {
-  //     // se ejecuta cuando se cambia el estado ITEMLIST
-  //     console.table(itemList)
-  //   }, [itemList])
+ 
       
   return (
     <View style={styles.screen}>
+      <View style={styles.tittle}>
+
+        <Text style={{ fontSize: 25 }} > To do list ✏️ </Text>
+      </View>
       <CustomModal 
         modalVisible={modalVisible}
         onHandlerDeleteItem={onHandlerDeleteItem}
@@ -74,5 +67,13 @@ const styles = StyleSheet.create({
   screen: {
     marginTop: '10%',
     padding: 30,
+  },
+
+  tittle: {
+alignItems: 'center',
+justifyContent: 'space-between',
+flexDirection: 'row', 
+justifyContent: 'center',
+padding: 30,
   },
 })

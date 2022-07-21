@@ -1,5 +1,8 @@
 import { Button, Modal, StyleSheet, Text, View } from 'react-native'
 
+import Colors from '../../constants/Colors';
+import colors from '../../constants/colors'
+
 export default function CustomModal(props) {
 
     const { modalVisible, itemSelected, onHandlerDeleteItem, onHandlerCompleteItem } = props
@@ -25,8 +28,8 @@ export default function CustomModal(props) {
                     </View>
                     <View style={styles.modalButton}>
                         
-                        <Button color="#ff5c5c" onPress={() => onHandlerCompleteItem(itemSelected.id)} title='Completar' />
-                        <Button color="#ff5c5c" onPress={() => onHandlerDeleteItem(itemSelected.id)} title='Borrar' />
+                        <Button color={Colors.primary} onPress={() => onHandlerCompleteItem(itemSelected.id)} title='Completar' />
+                        <Button color={Colors.primary} onPress={() => onHandlerDeleteItem(itemSelected.id)} title='Borrar' />
                     </View>
                 </View>
             </View>

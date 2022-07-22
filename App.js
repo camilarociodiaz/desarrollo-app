@@ -1,10 +1,11 @@
 import AppLoading from 'expo-app-loading';
-import { Listpage } from './pages/Listpage';
 import { Loginpage } from './pages/Loginpage';
 import { View } from 'react-native';
 import { useFonts } from 'expo-font';
 
 export default function App() {
+
+
 
   const [loaded] = useFonts({ 
     MontBlack: require('./assets/fonts/Montserrat-Black.ttf'), 
@@ -16,9 +17,14 @@ export default function App() {
 
   if(!loaded) return <AppLoading />
 
+  let content = <Loginpage></Loginpage>
+
+
+
+
   return (
     <View>
-      <Loginpage></Loginpage>
+    {content}
     </View>
   );
 }

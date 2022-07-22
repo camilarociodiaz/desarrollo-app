@@ -1,7 +1,6 @@
 import { Button, Modal, StyleSheet, Text, View } from 'react-native'
 
 import Colors from '../../constants/Colors';
-import colors from '../../constants/colors'
 
 export default function CustomModal(props) {
 

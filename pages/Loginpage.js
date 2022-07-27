@@ -1,11 +1,11 @@
-import { Button, Keyboard, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native'
-import { useEffect, useState } from 'react';
+import { Button, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View, } from 'react-native'
 
 import Card from '../components/Card/index';
 import { Listpage } from './Listpage';
 import React from 'react'
+import { useState } from 'react';
 
-export const Loginpage = () => {
+export const Loginpage = ({ navigation }) => {
     const [usernameValue, setUsernameValue] = useState('');
     const [phoneValue, setPhoneValue] = useState('');
     const [emailValue, setEmailValue] = useState('');
@@ -43,7 +43,7 @@ export const Loginpage = () => {
             setIncorrectEmail(false);
 
         } else {
-            alert("La dirección de email es incorrecta. ");
+            alert("The email address is incorrect. ");
             setIncorrectEmail(true);
         }
     }
@@ -51,60 +51,65 @@ export const Loginpage = () => {
 
 
     return (
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={StyleSheet.container}>
+            <SafeAreaView>
+                <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false} >
+                    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+                            <Card style={{ ...styles.inputContainer }}>
+                                <Text style={styles.login}> Welcome onboard with us! </Text>
+                                <Text style={{ fontFamily: 'MontBold', fontSize: 20, padding: 8 }} > Login </Text>
 
-        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+                                <View >
+                                    <TextInput
+                                        style={styles.textinput}
+                                        placeholder='Username'
+                                        value={usernameValue}
+                                        maxLength={15}
+                                        autoCorrect={false}
+                                        blurOnSubmit
+                                        onChangeText={handlerInputUsername}
 
-            {confirmed ? (<Listpage></Listpage>) :
+                                    ></TextInput>
 
-                <Card style={{ ...styles.inputContainer }}>
-                    <Text style={styles.login}> Welcome onboard with us! </Text>
-                    <Text style={{ fontFamily: 'MontBold', fontSize: 20, padding: 8 }} > Login </Text>
+                                    <TextInput
+                                        style={styles.textinput}
+                                        placeholder='Phone number'
+                                        autoCapitalize='none'
+                                        autoCorrect={false}
+                                        keyboardType='numeric'
+                                        maxLength={10}
+                                        value={phoneValue}
+                                        blurOnSubmit
+                                        onChangeText={handlerInputNumber}
+                                    ></TextInput>
 
-                    <View >
-                        <TextInput
-                            style={styles.textinput}
-                            placeholder='Username'
-                            value={usernameValue}
-                            maxLength={15}
-                            autoCorrect={false}
-                            blurOnSubmit
-                            onChangeText={handlerInputUsername}
+                                    <TextInput
+                                        style={styles.textinput}
+                                        placeholder='Email'
+                                        autoCapitalize='none'
+                                        value={emailValue}
+                                        autoCorrect={false}
+                                        blurOnSubmit
+                                        onChangeText={handlerInputEmail}
 
-                        ></TextInput>
-
-                        <TextInput
-                            style={styles.textinput}
-                            placeholder='Phone number'
-                            autoCapitalize='none'
-                            autoCorrect={false}
-                            keyboardType='numeric'
-                            maxLength={10}
-                            value={phoneValue}
-                            blurOnSubmit
-                            onChangeText={handlerInputNumber}
-                        ></TextInput>
-
-                        <TextInput
-                            style={styles.textinput}
-                            placeholder='Email'
-                            autoCapitalize='none'
-                            value={emailValue}
-                            autoCorrect={false}
-                            blurOnSubmit
-                            onChangeText={handlerInputEmail}
-
-                        ></TextInput>
-                        {incorrectEmail && (<Text> Incorrect email </Text>)}
-                    </View>
-                    <View style={styles.buttons} >
-                        <Button title='Clean' onPress={() => handlerResetInput()} />
-                        <Button title='Start' onPress={() => handlerConfirmInput()} disabled={phoneValue.length < 2 || emailValue.length < 2 ? true : false} />
-                    </View>
-                </Card>
-
-            }
-        </TouchableWithoutFeedback>
-
+                                    ></TextInput>
+                                    {incorrectEmail && (<Text> Incorrect email </Text>)}
+                                </View>
+                                <View style={styles.buttons} >
+                                    <Button title='Clean' onPress={() => handlerResetInput()} />
+                                    <Button title='Confirm' onPress={() => handlerConfirmInput()} disabled={phoneValue.length < 2 || emailValue.length < 2 ? true : false} />
+                
+                                </View>
+                                <View>
+                                { confirmed && (<Button title='Start' onPress={() => {navigation.navigate('To do list')}}/> ) }
+                                </View>
+                            </Card>
+                    </TouchableWithoutFeedback>
+                </ScrollView>
+            </SafeAreaView>
+        </KeyboardAvoidingView>
     )
 }
 

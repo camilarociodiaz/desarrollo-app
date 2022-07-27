@@ -13,6 +13,7 @@ export default function List(props) {
                 </TouchableOpacity>
             )}
             showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
             keyExtractor={item => item.id}
         />
     )
@@ -26,9 +27,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#edebeb', 
         borderRadius: 10,
-        marginTop: '7%',
+        marginTop: '4%',
         height: 40,
-        padding: 5,
+        padding: 2,
     
     }
 })

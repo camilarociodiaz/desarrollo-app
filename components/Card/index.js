@@ -11,7 +11,7 @@ const Card = props => (
 
 const styles = StyleSheet.create({
     inputCard: {
-        marginTop: '40%',
+        marginTop: '8%',
         margin: 20,
         padding: 50, 
         backgroundColor: 'white',

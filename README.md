@@ -1,9 +1,9 @@
 ## <em> To do list APP </em>
 
-![Mockup](https://pdf.ac/1lO7kb)
+![Mockup to do list app](https://raw.githubusercontent.com/camilarociodiaz/mywebsite/main/img/portfolio/todolist-mockup.jpg)
 
 
-![screen 2](https://user-images.githubusercontent.com/88467842/201225552-c2c347b8-d227-4bf4-8abe-5967a7201fec.jpeg)
+
 
 
 <h2> Run Locally </h2> 
